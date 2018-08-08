@@ -8,7 +8,6 @@ const CountryInfoView = function (container) {
 CountryInfoView.prototype.bindEvents = function () {
   PubSub.subscribe('Countries:selected-country-ready', (evt) => {
     const country = evt.detail;
-    console.log(evt.detail);
     this.render(country);
   })
 };

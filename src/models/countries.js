@@ -23,7 +23,6 @@ Countries.prototype.bindEvents = function () {
 
 Countries.prototype.publishCountryDetail = function (countryIndex) {
   const selectedCountry = this.text[countryIndex];
-
   PubSub.publish('Countries:selected-country-ready', selectedCountry);
 };
 
