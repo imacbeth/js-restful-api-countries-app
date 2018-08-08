@@ -23,8 +23,17 @@ CountryInfoView.prototype.render = function (country) {
   image.src = country.flag;
   this.container.appendChild(image);
 
-  const region = this.customCreateElement('h3', country.region);
+  const regionHeading = this.customCreateElement('h3', 'Region:')
+  this.container.appendChild(regionHeading);
+
+  const region = this.customCreateElement('p', country.region);
   this.container.appendChild(region);
+
+  const languagesHeading = this.customCreateElement('h3', 'Languages:');
+  this.container.appendChild(languagesHeading);
+
+  const languagesList = this.createLanguagesList(country.languages);
+  this.container.appendChild(languagesList);
 };
 
 
@@ -33,6 +42,17 @@ CountryInfoView.prototype.customCreateElement = function (elementType, text) {
   element.textContent = text;
 
   return element;
+};
+
+CountryInfoView.prototype.createLanguagesList = function (languages) {
+  const list = document.createElement('ul');
+
+  languages.forEach((language) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = language.name;
+    list.appendChild(listItem);
+  });
+  return list;
 };
 
 module.exports = CountryInfoView;
