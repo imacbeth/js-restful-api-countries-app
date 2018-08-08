@@ -9,7 +9,7 @@ const Countries = function () {
 Countries.prototype.getData = function () {
   const request = new Request('https://restcountries.eu/rest/v2/all');
   request.get((data) => {
-    this.text = data.name;
+    this.text = data;
     PubSub.publish('Countries:all-countries', this.text);
   })
 };
